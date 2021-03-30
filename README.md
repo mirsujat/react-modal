@@ -1,3 +1,5 @@
+**Fully Accessible Modal Dialog followed by WAI-ARIA Modal Authoring Practices.**
+
 # Project in Progesss
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
