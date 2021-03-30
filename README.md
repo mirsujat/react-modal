@@ -1,4 +1,5 @@
 **Fully Accessible Modal Dialog followed by WAI-ARIA Modal Authoring Practices.**
+[Learn More https://www.w3.org/TR/wai-aria-practices-1.1/#alertdialog](https://www.w3.org/TR/wai-aria-practices-1.1/#alertdialog).
 
 # Project in Progesss
 
