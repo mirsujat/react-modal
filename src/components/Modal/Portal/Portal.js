@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
 import ReactDOM from "react-dom"
 
-class Portal extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {  };
-  }
-  render() {
-    return (
-      <div>
-        <h1>Hello From Portal</h1>
-      </div>
-    );
+const portal = (WrappedComponent) =>{
+  return class extends Component{
+    render(){
+      // Wraps the input component in a container, without mutating it.
+      <WrappedComponent {...this.props} />;
+    }
   }
 }
 
-export default Portal;
+export default portal;
