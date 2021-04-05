@@ -211,4 +211,4 @@ react-modal is open source software licensed as MIT
 
 ## Thanks
 
-## Mir Sujat
+Mir Sujat
