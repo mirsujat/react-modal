@@ -210,4 +210,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 react-modal is open source software licensed as MIT
 
 **Thanks**
-##Mir Sujat##
+
+## Mir Sujat
