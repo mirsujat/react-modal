@@ -1,4 +1,4 @@
-import Modal from "./components/Modal/Modal";
+import {Modal, ModalDialog} from "./components/Modal";
 import './App.css';
 
 function App() {
@@ -6,6 +6,7 @@ function App() {
     <div className="App">
      <h1>React Modal</h1>
      <Modal></Modal>
+     <ModalDialog></ModalDialog>
     </div>
   );
 }
