@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 
 // We will use Dialog as Modal rendered in client side
 class Dialog extends Component {
