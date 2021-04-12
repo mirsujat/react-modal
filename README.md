@@ -4,6 +4,8 @@
 
 # Project in Progesss
 
+### Live Demo [react-modal] (https://react-modal-component.netlify.app/).
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 A fully accessible and flexible React modal built according [WAI-ARIA Authoring Practices](http://www.w3.org/TR/wai-aria-practices/#dialog_modal).
