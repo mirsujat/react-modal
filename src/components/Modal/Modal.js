@@ -34,7 +34,14 @@ class Modal extends Component {
     }
     if (this.props.open) {
       content = (
-        <div className="modal-wrapper" open={this.props.open}>
+        <div 
+        className="modal-wrapper" 
+        open={this.props.open} 
+        role="dialog"
+        id={this.props.id}
+        aria-labelledby="dialog1_label"
+        aria-modal="true"
+ >
           <div className="modal">
             <div>{this.props.children}</div>
           </div>

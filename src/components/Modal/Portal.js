@@ -5,10 +5,7 @@ class Portal extends Component {
   constructor(props) {
     super(props);
     this.container = document.createElement("div");
-    this.container.setAttribute("role",  "dialog");
-    this.container.setAttribute("id", this.props.id);
-    this.container.setAttribute("aria-labelledby", this.props.label);
-    this.container.setAttribute("aria-modal",  "true");
+
   }
 
   componentDidMount() {
