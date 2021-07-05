@@ -47,6 +47,21 @@
   align-items: center;
 }
 
+.moda-close {
+  opacity: 0;
+}
+.modal-wrapper.modal-hidden {
+  opacity: 0;
+  transition: opacity 400ms ease-in 20ms;
+}
+.has-modal {
+  opacity: 1;
+}
+.modal-wrapper.has-modal {
+  opacity: 1;
+  transition: opacity 500ms linear 100ms;
+}
+
 .modal {
   position: relative;
   display: flex;

@@ -6,7 +6,7 @@ import Portal from "./Portal";
 
 class Modal extends Component {
 
-// 
+
    
 //    * @desc Dialog object providing modal focus management.
 //    *
@@ -22,24 +22,24 @@ class Modal extends Component {
 //    *          Optional parameter containing either the DOM node or the ID of the
 //    *          DOM node to focus when the dialog opens. If not specified, the
 //    *          first focusable element in the dialog will receive focus.
-//    
+ 
 
 
   render() {
     console.log("Props From Modal: ", this.props);
     let content = null;
-    let modalRoot = "modal-root modal-hidden";
+    let modalClass = "modal-wrapper modal-hidden";
     if (this.props.open) {
-      modalRoot = "modal-root has-modal";
+      modalClass = "modal-wrapper has-modal";
     }
     if (this.props.open) {
       content = (
         <div 
-        className="modal-wrapper" 
+        className={modalClass} 
         open={this.props.open} 
         role="dialog"
         id={this.props.id}
-        aria-labelledby="dialog1_label"
+        aria-labelledby={this.props.label}
         aria-modal="true"
  >
           <div className="modal">
@@ -51,7 +51,7 @@ class Modal extends Component {
     }
     return (
       <Portal {...this.props}>
-        <div className={modalRoot}>{content}</div>
+        <>{content}</>
       </Portal>
     );
   }
