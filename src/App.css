@@ -99,3 +99,6 @@
   opacity: 1;
   transition: opacity 500ms linear 100ms;
 }
+div:focus {
+  background: red;
+}

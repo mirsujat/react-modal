@@ -18,13 +18,14 @@ class App extends Component {
   };
 
   render() {
+    
     return (
       <div>
        <h1>Hello From app </h1>
        <button onClick={this.handleClickOpen} className="close-btn">
             Close
           </button>
-          <Modal open={this.state.open} onClose={this.handleClickClose}>
+          <Modal open={this.state.open} onClose={this.handleClickClose} id="123">
           <h1>I am modal</h1>
             <h1>I am modal</h1>
               <h1>I am modal</h1>
