@@ -3,7 +3,7 @@ import Backdrop from "./Backdrop/Backdrop";
 import Portal from "./Portal";
 
 
-// We will use ModalDialog in server side rendering
+
 class Modal extends Component {
   render() {
     console.log("Props From Modal: ", this.props);
@@ -23,7 +23,7 @@ class Modal extends Component {
       );
     }
     return (
-      <Portal>
+      <Portal {...this.props}>
         <div className={modalRoot}>{content}</div>
       </Portal>
     );

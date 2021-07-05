@@ -13,9 +13,6 @@ class Portal extends Component {
 
   componentDidMount() {
     document.body.appendChild(this.container);
-  //  const applicationNode = document.body.appendChild(this.container);
-  //  applicationNode.setAttribute("area-modal",  "true");
-  //  return applicationNode;
   }
   componentWillUnmount() {
     document.body.removeChild(this.container);
