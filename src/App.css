@@ -74,14 +74,14 @@
 .moda-close {
   opacity: 0;
 }
-.modal-root.modal-close {
+.modal-root.modal-hidden {
   opacity: 0;
   transition: opacity 400ms ease-in 20ms;
 }
-.modal-open {
+.has-modal {
   opacity: 1;
 }
-.modal-root.modal-open {
+.modal-root.has-modal {
   opacity: 1;
   transition: opacity 500ms linear 100ms;
 }
