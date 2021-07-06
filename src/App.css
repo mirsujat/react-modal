@@ -94,6 +94,7 @@
 }
 .has-modal {
   opacity: 1;
+  outline: 2px solid red;
 }
 .modal-root.has-modal {
   opacity: 1;
@@ -101,4 +102,5 @@
 }
 div:focus {
   background: red;
+  outline: 2px solid red;
 }

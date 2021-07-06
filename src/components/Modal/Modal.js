@@ -7,8 +7,8 @@ import Portal from "./Portal";
 class Modal extends Component {
   constructor(props) {
     super(props);
-    // Create a ref to store the textInput DOM element
-    this.modalRef = React.createRef();
+  
+  
   }
 
    
@@ -27,21 +27,14 @@ class Modal extends Component {
 //    *          DOM node to focus when the dialog opens. If not specified, the
 //    *          first focusable element in the dialog will receive focus.
  
-focus() {
-  // Explicitly focus the text input using the raw DOM API
-  // Note: we're accessing "current" to get the DOM node
-  return this.modalRef.current.focus();
-}
 
-componentDidMount(){
- return console.log("refer11 to ref", this.modalRef.current);
-  }
+
 
 
   render() {
     
     console.log("Props From Modal: ", this.props);
-    console.log("ref", this.modalRef.current);
+
     let content = null;
     let modalClass = "modal-wrapper modal-hidden";
     if (this.props.open) {
@@ -59,7 +52,8 @@ componentDidMount(){
         aria-labelledby={this.props.label}
         aria-modal="true"
         ref={this.modalRef}
-        tab-index="100"
+       
+        
         
  >
           <div className="modal">
@@ -69,9 +63,7 @@ componentDidMount(){
         </div>
       );
     }
-    if(content !== null){
-       console.log("refer to ref", this.modalRef.current);
-    }
+
 
    
     return (
