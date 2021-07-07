@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Backdrop from "./Backdrop/Backdrop";
 import Portal from "./Portal";
-import FocusTrap from "focus-trap-react";
+
 
 
 
@@ -39,27 +39,23 @@ class Modal extends Component {
 
     let content = null;
     let modalClass = "modal-wrapper modal-hidden";
-    if (this.props.open) {
+    if (this.props.activateModal) {
       modalClass = "modal-wrapper has-modal";
     }
    
 
     if (this.props.activateModal) {
       content = ( 
-        <FocusTrap 
-          titleText="demo one"
-          onExit={this.props.onExit}
-          initialFocus={this.props.initialFocus}
-          underlayStyle={{ paddingTop: '2em' }}
-         getApplicationNode={this.props.getApplicationNode}
-        
- >
+        <div
+        activatemodal={this.props.activateModal}
+      >      
+        <div className={modalClass}>
           <div className="modal" >
             <div>{this.props.children}</div>
-            <Backdrop  />
           </div>
-          
-        </FocusTrap>
+           <Backdrop  />
+           </div>
+        </div>
       );
     }
 

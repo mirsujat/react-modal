@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-
+import Focustrap from "focus-trap";
 import Modal from "./components/Modal/Modal";
 
 import './App.css';
@@ -23,6 +23,7 @@ class App extends Component {
 
   deactivateModal = () => {
     this.setState({ modalActive: false });
+    console.log("I am clicked");
   };
 
   getApplicationNode = () => {
@@ -39,10 +40,6 @@ class App extends Component {
         </button>
           <Modal 
           activateModal={this.state.modalActive}
-          onExit={this.deactivateModal}
-          deactivateModal="#deactivate-modal"
-          getApplicationNode={this.getApplicationNode}
-          initialFocus={}
           >
           <h1>I am modal</h1>
             <h1>I am modal</h1>

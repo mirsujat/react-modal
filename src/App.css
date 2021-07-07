@@ -36,6 +36,9 @@
     transform: rotate(360deg);
   }
 }
+button {
+  cursor: pointer;
+}
 .modal-wrapper {
   position: absolute;
   width: 100%;
