@@ -5,16 +5,28 @@ import Modal from "./components/Modal/Modal";
 import './App.css';
 
 class App extends Component {
-  constructor(props) {
+ constructor(props) {
     super(props);
-    this.state = { open: false };
+
+    this.state = {
+      modalActive: false
+    };
+
+    this.activateModal = this.activateModal.bind(this);
+    this.deactivateModal = this.deactivateModal.bind(this);
+    this.getApplicationNode = this.getApplicationNode.bind(this);
   }
 
-  handleClickOpen = () => {
-    this.setState({ open: true });
+  activateModal = () => {
+    this.setState({ modalActive: true });
   };
-  handleClickClose = () => {
-    this.setState({ open: false });
+
+  deactivateModal = () => {
+    this.setState({ modalActive: false });
+  };
+
+  getApplicationNode = () => {
+    return document.getElementById('react-modal-application');
   };
 
   render() {
@@ -22,15 +34,21 @@ class App extends Component {
     return (
       <div>
        <h1>Hello From app </h1>
-       <button onClick={this.handleClickOpen} className="close-btn">
+       <button onClick={this.activateModal} className="close-btn">
             Close
-          </button>
-          <Modal open={this.state.open} onClose={this.handleClickClose} id="123">
+        </button>
+          <Modal 
+          activateModal={this.state.modalActive}
+          onExit={this.deactivateModal}
+          deactivateModal="#deactivate-modal"
+          getApplicationNode={this.getApplicationNode}
+          initialFocus={}
+          >
           <h1>I am modal</h1>
             <h1>I am modal</h1>
               <h1>I am modal</h1>
                 <h1>I am modal</h1>
-          <button onClick={this.handleClickClose} className="close-btn">
+          <button onClick={this.deactivateModal} className="close-btn" id="deactivate-modal">
             Close
           </button>
         </Modal>

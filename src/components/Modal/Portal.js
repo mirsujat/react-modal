@@ -5,6 +5,7 @@ class Portal extends Component {
   constructor(props) {
     super(props);
     this.container = document.createElement("div");
+    this.container.setAttribute("id", "react-modal-application");
 
   }
 

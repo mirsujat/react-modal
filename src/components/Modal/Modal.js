@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import Backdrop from "./Backdrop/Backdrop";
 import Portal from "./Portal";
+import FocusTrap from "focus-trap-react";
 
 
 
 class Modal extends Component {
+ 
   constructor(props) {
     super(props);
   
@@ -40,36 +42,35 @@ class Modal extends Component {
     if (this.props.open) {
       modalClass = "modal-wrapper has-modal";
     }
-    if(this.props.open && !this.props.id ) alert ("Modal must have an id.");
+   
 
-    if (this.props.open && this.props.id) {
+    if (this.props.activateModal) {
       content = ( 
-        <div 
-        className={modalClass} 
-        open={this.props.open} 
-        role="dialog"
-        id={this.props.id}
-        aria-labelledby={this.props.label}
-        aria-modal="true"
-        ref={this.modalRef}
-       
-        
+        <FocusTrap 
+          titleText="demo one"
+          onExit={this.props.onExit}
+          initialFocus={this.props.initialFocus}
+          underlayStyle={{ paddingTop: '2em' }}
+         getApplicationNode={this.props.getApplicationNode}
         
  >
-          <div className="modal">
+          <div className="modal" >
             <div>{this.props.children}</div>
+            <Backdrop  />
           </div>
-          <Backdrop onClick={this.props.onClose} />
-        </div>
+          
+        </FocusTrap>
       );
     }
 
 
    
     return (
-      <Portal {...this.props}>
-        <>{content}</>
-      </Portal>
+    <Portal>
+       <div>{content}</div>
+    </Portal>
+       
+  
     );
   }
 }
