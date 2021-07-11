@@ -2,19 +2,20 @@ import React, { Component } from 'react';
 import FocusTrap from 'focus-trap-react';
 import portal from "./Portal";
 
+import "./modal.css";
 
 
 
 class Modal extends Component {
  static defaultProps = {
-    underlayProps: {},
+    backdropProps: {},
+    backdropColor: 'rgba(0,0,0,0.5)',
+    backdropClickExtits: true,
     dialogId: 'modal-dialog',
-    underlayClickExits: true,
     escapeExits: true,
-    underlayColor: 'rgba(0,0,0,0.5)',
     includeDefaultStyles: true,
     focusTrapPaused: false,
-    
+  
   };
 
   componentWillMount() {
@@ -41,8 +42,6 @@ class Modal extends Component {
     if (this.props.escapeExits) {
       this.addKeyDownListener();
     }
-
-
   }
 
   componentDidUpdate(prevProps) {
@@ -65,14 +64,14 @@ class Modal extends Component {
 
   addKeyDownListener() {
     setTimeout(() => {
-      document.addEventListener('keydown', this.checkDocumentKeyDown);
-    });
+      window.document.addEventListener('keydown', this.checkDocumentKeyDown);
+    },0);
   }
 
   removeKeyDownListener() {
     setTimeout(() => {
-      document.removeEventListener('keydown', this.checkDocumentKeyDown);
-    });
+      window.document.removeEventListener('keydown', this.checkDocumentKeyDown);
+    },0);
   }
 
   getApplicationNode = () => {
@@ -124,48 +123,35 @@ class Modal extends Component {
         textAlign: 'center'
       };
 
-      if (props.underlayColor) {
-        style.background = props.underlayColor;
+      if (props.backdropColor) {
+        style.background = props.backdropColor;
       }
 
-      if (props.underlayClickExits) {
+      if (props.backdropClickExtits) {
         style.cursor = 'pointer';
       }
     }
 
-    if (props.underlayStyle) {
-      for (const key in props.underlayStyle) {
-        if (!props.underlayStyle.hasOwnProperty(key)) continue;
-        style[key] = props.underlayStyle[key];
+    if (props.backdropStyle) {
+      for (const key in props.backdropStyle) {
+        if (!props.backdropStyle.hasOwnProperty(key)) continue;
+        style[key] = props.backdropStyle[key];
       }
     }
 
-    const underlayProps = {
-      className: props.underlayClass,
+    const backdropProps = {
+      className: props.backdropClass,
       style: style
     };
 
-    if (props.underlayClickExits) {
-      underlayProps.onMouseDown = this.checkUnderlayClick;
+    if (props.backdropClickExtits) {
+      backdropProps.onMouseDown = this.checkUnderlayClick;
     }
 
-    for (const prop in this.props.underlayProps) {
-      underlayProps[prop] = this.props.underlayProps[prop];
+    for (const prop in this.props.backdropProps) {
+      backdropProps[prop] = this.props.backdropProps[prop];
     }
 
-    let verticalCenterStyle = {};
-    if (props.includeDefaultStyles) {
-      verticalCenterStyle = {
-        display: 'inline-block',
-        height: '100%',
-        verticalAlign: 'middle'
-      };
-    }
-
-    const verticalCenterHelperProps = {
-      key: 'a',
-      style: verticalCenterStyle
-    };
 
     let dialogStyle = {};
     if (props.includeDefaultStyles) {
@@ -177,11 +163,6 @@ class Modal extends Component {
         cursor: 'default',
         outline: props.focusDialog ? 0 : null
       };
-
-      if (props.verticallyCenter) {
-        dialogStyle.verticalAlign = 'middle';
-        dialogStyle.top = 0;
-      }
     }
 
     if (props.dialogStyle) {
@@ -217,15 +198,10 @@ class Modal extends Component {
       }
     }
 
-    const childrenArray = [
+    // This will render the modal
+    const Dialog = [ 
       React.createElement('div', dialogProps, props.children)
-    ];
-
-    if (props.verticallyCenter) {
-      childrenArray.unshift(
-        React.createElement('div', verticalCenterHelperProps)
-      );
-    }
+    ]
 
     const focusTrapOptions = props.focusTrapOptions || {};
     if (props.focusDialog || props.initialFocus) {
@@ -235,22 +211,15 @@ class Modal extends Component {
     }
     focusTrapOptions.escapeDeactivates = props.escapeExits;
 
-    //TODO
-    // const Element = <FocusTrap {...focusTrapOptions} paused={props.focusTrapPaused} >
-    //   <div {...underlayProps}>
-    //   {childrenArray}
-    //   </div>
-    // </FocusTrap>;
 
+    const Element = <FocusTrap {...focusTrapOptions} paused={props.focusTrapPaused} >
+      <div {...backdropProps}>
+      {Dialog}
+      </div>
+    </FocusTrap>;
 
-    return React.createElement(
-      FocusTrap,
-      {
-        focusTrapOptions,
-        paused: props.focusTrapPaused
-      },
-      React.createElement('div', underlayProps, childrenArray)
-    );
+    return Element;
+
   }
 }
 
