@@ -78,31 +78,3 @@ button {
   border-radius: 2px;
   box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.2);
 }
-.backdrop {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.4);
-}
-
-.moda-close {
-  opacity: 0;
-}
-.modal-root.modal-hidden {
-  opacity: 0;
-  transition: opacity 400ms ease-in 20ms;
-}
-.has-modal {
-  opacity: 1;
-  outline: 2px solid red;
-}
-.modal-root.has-modal {
-  opacity: 1;
-  transition: opacity 500ms linear 100ms;
-}
-div:focus {
-  background: red;
-  outline: 2px solid red;
-}

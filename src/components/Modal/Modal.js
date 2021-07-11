@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import FocusTrap from 'focus-trap-react';
 import portal from "./Portal";
 
-import "./modal.css";
 
 
 
@@ -10,7 +9,7 @@ class Modal extends Component {
  static defaultProps = {
     backdropProps: {},
     backdropColor: 'rgba(0,0,0,0.5)',
-    backdropClickExtits: true,
+    backdropClickExits: false,
     dialogId: 'modal-dialog',
     escapeExits: true,
     includeDefaultStyles: true,
@@ -66,6 +65,7 @@ class Modal extends Component {
     setTimeout(() => {
       window.document.addEventListener('keydown', this.checkDocumentKeyDown);
     },0);
+   
   }
 
   removeKeyDownListener() {
@@ -111,6 +111,7 @@ class Modal extends Component {
     let style = {};
     if (props.includeDefaultStyles) {
       style = {
+        display: "block",
         position: 'fixed',
         top: 0,
         left: 0,
@@ -127,7 +128,7 @@ class Modal extends Component {
         style.background = props.backdropColor;
       }
 
-      if (props.backdropClickExtits) {
+      if (props.backdropClickExits) {
         style.cursor = 'pointer';
       }
     }
@@ -144,7 +145,7 @@ class Modal extends Component {
       style: style
     };
 
-    if (props.backdropClickExtits) {
+    if (props.backdropClickExits) {
       backdropProps.onMouseDown = this.checkUnderlayClick;
     }
 
@@ -212,13 +213,13 @@ class Modal extends Component {
     focusTrapOptions.escapeDeactivates = props.escapeExits;
 
 
-    const Element = <FocusTrap {...focusTrapOptions} paused={props.focusTrapPaused} >
+    const Backdrop = <FocusTrap {...focusTrapOptions} paused={props.focusTrapPaused} >
       <div {...backdropProps}>
       {Dialog}
       </div>
     </FocusTrap>;
 
-    return Element;
+    return Backdrop;
 
   }
 }

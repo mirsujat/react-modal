@@ -38,7 +38,7 @@ class App extends Component {
           backdropStyle={{ paddingTop: '2em' }}
           includeDefaultStyles="true"
           focusDialog="true"
-          escapeExits="true"
+          
           
         >
           <div id="demo-one-modal" className="modal">
@@ -58,7 +58,7 @@ class App extends Component {
               <p>
                 me too
               </p>
-              
+        
             </div>
             <footer className="modal-footer">
               <button id="demo-one-deactivate" onClick={this.deactivateModal}>
