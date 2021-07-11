@@ -35,21 +35,30 @@ class App extends Component {
           onExit={this.deactivateModal}
           initialFocus="#demo-one-deactivate"
           getApplicationNode={this.getApplicationNode}
-          underlayStyle={{ paddingTop: '2em' }}
+          backdropStyle={{ paddingTop: '2em' }}
+          includeDefaultStyles="true"
+          focusDialog="true"
+          escapeExits="true"
+          
         >
           <div id="demo-one-modal" className="modal">
             <div className="modal-body">
               <p>
                 Here is a modal
                 {' '}
-                <a href="void">with</a>
+                <a href="/">with</a>
                 {' '}
-                <a href="void">some</a>
+                <a href="/">some</a>
                 {' '}
-                <a href="void">focusable</a>
+                <a href="/">focusable</a>
                 {' '}
                 parts.
               </p>
+              <input type="text"></input>
+              <p>
+                me too
+              </p>
+              
             </div>
             <footer className="modal-footer">
               <button id="demo-one-deactivate" onClick={this.deactivateModal}>
