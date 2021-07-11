@@ -63,14 +63,14 @@ class Modal extends Component {
 
   addKeyDownListener() {
     setTimeout(() => {
-      window.document.addEventListener('keydown', this.checkDocumentKeyDown);
+      window.document.addEventListener('keydown', this.checktKeyDown);
     },0);
    
   }
 
   removeKeyDownListener() {
     setTimeout(() => {
-      window.document.removeEventListener('keydown', this.checkDocumentKeyDown);
+      window.document.removeEventListener('keydown', this.checkKeyDown);
     },0);
   }
 
@@ -79,7 +79,7 @@ class Modal extends Component {
     return this.props.applicationNode;
   };
 
-  checkUnderlayClick = event => {
+  checkBackdropClick = event => {
     if (
       (this.dialogNode && this.dialogNode.contains(event.target)) ||
       // If the click is on the scrollbar we don't want to close the modal.
@@ -90,7 +90,7 @@ class Modal extends Component {
     this.exit(event);
   };
 
-  checkDocumentKeyDown = event => {
+  checkKeyDown = event => {
     if (
       this.props.escapeExits &&
       (event.key === 'Escape' || event.key === 'Esc' || event.keyCode === 27)
@@ -146,7 +146,7 @@ class Modal extends Component {
     };
 
     if (props.backdropClickExits) {
-      backdropProps.onMouseDown = this.checkUnderlayClick;
+      backdropProps.onMouseDown = this.checkBackdropClick;
     }
 
     for (const prop in this.props.backdropProps) {
