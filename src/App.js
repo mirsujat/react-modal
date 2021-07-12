@@ -30,11 +30,6 @@ class App extends Component {
 
 
 
-  test = (event)=>{ 
-      console.log("Hi! i'm clicked!!", event.keyCode);
-    
-  }
-
   render() {
     const modal = this.state.modalActive
       ? <Modal
@@ -46,25 +41,23 @@ class App extends Component {
       
         >
           <div id="demo-one-modal" className="modal">
-            <div className="modal-body">
+            <div >
               <p>
-                Here is a modal
+                This is an accessable modal
                 {' '}
-                <a href="/">with</a>
+                <a href="/">has</a>
                 {' '}
                 <a href="/">some</a>
                 {' '}
                 <a href="/">focusable</a>
                 {' '}
-                parts.
+                <a href="/">content</a>
+                {' '}
+                
               </p>
               <input type="text"></input>
-              <p onClick={this.test} style={{cursor: "pointer"}}>
-                me too
-              </p>
-        
             </div>
-            <footer className="modal-footer">
+            <footer style={{marginTop: "20px"}}>
               <button id="demo-one-deactivate" onClick={this.deactivateModal}>
                 deactivate modal
               </button>

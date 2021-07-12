@@ -117,7 +117,7 @@ class Modal extends Component {
         left: 0,
         width: '100%',
         height: '100%',
-        zIndex: 1050,
+        zIndex: 10000,
         overflowX: 'hidden',
         overflowY: 'auto',
         WebkitOverflowScrolling: 'touch',
