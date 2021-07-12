@@ -8,20 +8,17 @@ class App extends Component {
     super(props);
 
     this.state = {
-      modalActive: false
+      open: false
     };
 
-    this.activateModal = this.activateModal.bind(this);
-    this.deactivateModal = this.deactivateModal.bind(this);
-    this.getApplicationNode = this.getApplicationNode.bind(this);
   }
 
-  activateModal = () => {
-    this.setState({ modalActive: true });
+  openModal = () => {
+    this.setState({ open: true });
   };
 
-  deactivateModal = () => {
-    this.setState({ modalActive: false });
+  closeModal = () => {
+    this.setState({ open: false });
   };
 
   getApplicationNode = () => {
@@ -31,7 +28,7 @@ class App extends Component {
 
 
   render() {
-    const modal = this.state.modalActive
+    const modal = this.state.open
       ? <Modal
           titleText="demo one"
           initialFocus="#demo-one-deactivate"
@@ -58,8 +55,8 @@ class App extends Component {
               <input type="text"></input>
             </div>
             <footer style={{marginTop: "20px"}}>
-              <button id="demo-one-deactivate" onClick={this.deactivateModal}>
-                deactivate modal
+              <button id="demo-one-deactivate" onClick={this.closeModal}>
+                 close modal
               </button>
             </footer>
           </div>
@@ -68,8 +65,8 @@ class App extends Component {
 
     return (
       <div>
-        <button onClick={this.activateModal}>
-          activate modal
+        <button onClick={this.openModal}>
+           Open modal 
         </button>
         {modal}
       </div>
