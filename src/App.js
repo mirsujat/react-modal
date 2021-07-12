@@ -28,18 +28,22 @@ class App extends Component {
     return document.getElementById('application');
   };
 
+
+
+  test = (event)=>{ 
+      console.log("Hi! i'm clicked!!", event.keyCode);
+    
+  }
+
   render() {
     const modal = this.state.modalActive
       ? <Modal
           titleText="demo one"
-          onExit={this.deactivateModal}
           initialFocus="#demo-one-deactivate"
           getApplicationNode={this.getApplicationNode}
           backdropStyle={{ paddingTop: '2em' }}
           includeDefaultStyles="true"
-          focusDialog="true"
-          
-          
+      
         >
           <div id="demo-one-modal" className="modal">
             <div className="modal-body">
@@ -55,7 +59,7 @@ class App extends Component {
                 parts.
               </p>
               <input type="text"></input>
-              <p>
+              <p onClick={this.test} style={{cursor: "pointer"}}>
                 me too
               </p>
         
