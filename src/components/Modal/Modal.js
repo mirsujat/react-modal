@@ -11,10 +11,9 @@ class Modal extends Component {
     backdropColor: 'rgba(0,0,0,0.5)',
     backdropClickExits: false,
     dialogId: 'modal-dialog',
-    escapeExits: true,
+    escapeExits: false,
     includeDefaultStyles: true,
     focusTrapPaused: false,
-  
   };
 
   componentWillMount() {
@@ -53,7 +52,6 @@ class Modal extends Component {
   }
 
   componentWillUnmount() {
- 
     const applicationNode = this.getApplicationNode();
     if (applicationNode) {
       applicationNode.setAttribute('aria-hidden', 'false');
