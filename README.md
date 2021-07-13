@@ -8,28 +8,24 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+##Features
 A fully accessible and flexible React modal built according [WAI-ARIA Authoring Practices](http://www.w3.org/TR/wai-aria-practices/#dialog_modal).
+-Minimum style
 
-This module provides a minimally styled "[container](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)" component to wrap your fully-styled "presentational" component. It provides the following features, while giving you complete control of the content:
-
-- Focus is trapped within the modal: Tab and Shift+Tab will cycle through the modal's focusable nodes
-  without returning to the main document beneath.
+- Focus is trapped within the modal: Tab and Shift+Tab will cycle through the modal's focusable nodes without returning to the main document beneath.
 - Escape will close the modal.
 - Scrolling is frozen on the main document beneath the modal.
-- When the modal closes, focus returns to the element that was focused just before the modal activated.
+- When the modal closes, focus returns to the element that was focused just before the modal open.
 - The dialog element has an ARIA `role` of `dialog` (or `alertdialog`).
 - The dialog element has an ARIA attribute designating its title, either `aria-label` or `aria-labelledby`.
-- By default, clicking on the modal's underlay (outside the dialog element) will close the modal (this can be disabled).
+- By default, clicking on the modal's Backdrop (outside the dialog element) will close the modal (this can be disabled).
 - The modal is appended to the end of `document.body` instead of its taking up its source-order position within the React component tree.
-
-"Flexible" mostly means that this module provides absolutely minimal inline styles — just enough to get the thing working — but does not provide "complete" modal styling that would get in your way. You get to (have to) style the dialog yourself. (Maybe make a fancy-looking modal module that others could use, which depends on this one behind the scenes?)
 
 ## Project Goals
 
 - Full accessibility
 - Maximum flexibility
 - Absolutely minimal styling
-- Modular construction: this module is built on top of a few small JS modules that could be used by other React and non-React frontend components:
 
 ## Details
 
@@ -47,12 +43,21 @@ Pass your dialog element as the child. And that's it.
 
 When the modal is mounted, you'll notice the following:
 
-- Focus is trapped: only elements within the modal will receive focus as you tab through. This is done by utility function trapFocus();
+- Focus is trapped: only elements within the modal will receive focus as you tab through.
 - The modal has the ARIA attributes it needs: a `role` of `dialog` (or `alertdialog`) and an `aria-label` or `aria-labelledby` attribute.
-- The main document's scroll is frozen (except on touchscreens). This is done by [no-scroll](https://github.com/davidtheclark/no-scroll).
-- Your content is set atop a fixed-position underlay. You can control the appearance and behavior of this underlay in various ways (see below).
-- Your content is horizontally centered. You can also vertically center it, if you wish.
+- The main document's scroll is frozen.
+- Your content is set atop a fixed-position Backdrop. You can control the appearance and behavior of this backdrop in various ways (see below).
 - The modal is appended to `document.body`, not inserted directly into the HTML source order, as you might assume; but it should still update correctly. (This makes positioning easier (no weird nested z-index troubles).)
+
+## static dafaultProps
+
+    backdropProps: {},
+    backdropColor: 'rgba(0,0,0,0.5)',
+    backdropClickExits: true,
+    dialogId: 'modal-dialog',
+    escapeExits: true,
+    includeDefaultStyles: true,
+    focusTrapPaused: false,
 
 ## Props
 
@@ -63,9 +68,9 @@ Any `data-*` or `aria-*` props that you provide will be passed directly to the m
 Type: `Function`
 
 This function handles the state change of _exiting_ (or deactivating) the modal.
-It will be invoked when the user clicks outside the modal (if `underlayClickExits={true}`, as is the default) or hits Escape (if `escapeExits={true}`, as is the default), and it receives the event that triggered it as its only argument.
+It will be invoked when the user clicks outside the modal (if `backdropClickExits={true}`, as is the default) or hits Escape (if `escapeExits={true}`, as is the default), and it receives the event that triggered it as its only argument.
 
-Maybe it's just a wrapper around `setState()`; or maybe you use some more involved Flux-inspired state management — whatever the case, this module leaves the state management up to _you_ instead of making assumptions. That also makes it easier to create your own "close modal" buttons; because you have the function that closes the modal right there, written by you, at your disposal.
+Maybe it's just a wrapper around `setState()`; or maybe you use some more involved Flux-inspired state management — whatever the case, this module leaves the state management up to _you_ instead of making assumptions. That also makes it easier to create your own "close modal" buttons; because you have the function that closes the modal right there, written by you.
 
 You may omit this prop if you don't want clicks outside the modal or Escape to close it, so don't want to provide a function.
 
@@ -95,7 +100,7 @@ Type: `Boolean`, Default: `true`
 
 By default, styles are applied inline to the dialog and underlay portions of the component. However, you can disable all inline styles by setting `includeDefaultStyles` to `false`. If set, _you must specify all styles externally_, including positioning. This is helpful if your project uses external CSS assets.
 
-_Note:_ `underlayStyle` and `dialogStyle` can still be set inline, but these will be the only styles applied.
+_Note:_ `backdropStyle` and `dialogStyle` can still be set inline, but these will be the only styles applied.
 
 ### dialogClass
 
@@ -107,7 +112,7 @@ Be aware that, _by default_, this module does apply various inline styles to the
 
 ### dialogId
 
-Type: `String`, Default: `dialogId`
+Type: `String`, Default: `modal-dialog`
 
 Choose your own id attribute for the dialog element.
 
@@ -123,17 +128,13 @@ Type: `Boolean`
 
 By default, when the modal activates its first focusable child will receive focus.
 However, if `focusDialog` is `true`, the dialog itself will receive initial focus —
-and that focus will be hidden. (This is essentially what Bootstrap does with their modal.)
-
-See the example below.
+and that focus will be hidden.
 
 ### initialFocus
 
 Type: `String`
 
 By default, when the modal activates its first focusable child will receive focus. If, instead, you want to _identify a specific element that should receive initial focus_, pass a _selector string_ to this prop. (That selector is passed to `document.querySelector()` to find the DOM node.)
-
-Demo example 3 and an additional example below illustrate a good method if you want no initial visible focus. (Add `tabIndex='0'` to the modal's content and give it `outline: 0;`.)
 
 ### mounted
 
