@@ -2,8 +2,6 @@
 
 [Learn More WAI-ARIA Modal Authoring Practices](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal).
 
-# Project in Progesss
-
 ### Live Demo [react-modal](https://react-modal-component.netlify.app/).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -26,6 +24,68 @@ A fully accessible and flexible React modal built according [WAI-ARIA Authoring 
 - Full accessibility
 - Maximum flexibility
 - Absolutely minimal styling
+
+Here's one more simple example:
+
+```js
+import React, { Component } from "react";
+import Modal from "./components/Modal/Modal";
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+    };
+  }
+  openModal = () => {
+    this.setState({ open: true });
+  };
+  closeModal = () => {
+    this.setState({ open: false });
+  };
+  getApplicationNode = () => {
+    return document.getElementById("application");
+  };
+
+  render() {
+    const modal = this.state.open ? (
+      <Modal
+        titleText="demo one"
+        initialFocus="#demo-one-deactivate"
+        getApplicationNode={this.getApplicationNode}
+        backdropStyle={{ paddingTop: "4em" }}
+        includeDefaultStyles="true"
+      >
+        <div id="demo-one-modal" className="modal">
+          <div>
+            <p>
+              This is an accessable modal <a href="/">has</a>{" "}
+              <a href="/">some</a> <a href="/">focusable</a>{" "}
+              <a href="/">content</a>{" "}
+            </p>
+            <input type="text"></input>
+          </div>
+          <footer style={{ marginTop: "20px" }}>
+            <button id="demo-one-deactivate" onClick={this.closeModal}>
+              close modal
+            </button>
+          </footer>
+        </div>
+      </Modal>
+    ) : (
+      false
+    );
+
+    return (
+      <div>
+        <button onClick={this.openModal}>Open modal</button>
+        {modal}
+      </div>
+    );
+  }
+}
+export default App;
+```
 
 ## Details
 
