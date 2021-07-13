@@ -9,9 +9,9 @@ class Modal extends Component {
  static defaultProps = {
     backdropProps: {},
     backdropColor: 'rgba(0,0,0,0.5)',
-    backdropClickExits: false,
+    backdropClickExits: true,
     dialogId: 'modal-dialog',
-    escapeExits: false,
+    escapeExits: true,
     includeDefaultStyles: true,
     focusTrapPaused: false,
   };
